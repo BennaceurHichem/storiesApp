@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-cosnt UserSchema  =  new mongoose.Schema({
+const UserSchema  =  new mongoose.Schema({
 
     googleId: {
         type: String,
@@ -22,7 +22,7 @@ cosnt UserSchema  =  new mongoose.Schema({
        
       },
       image:  {
-          type:String;
+          type:String,
           require:true 
       },
       createdAt: {
@@ -38,6 +38,6 @@ cosnt UserSchema  =  new mongoose.Schema({
 
 
 
-mongoose.model('User', UserSchema);
+
 // Export the User model
-module.exports = User   ;
+module.exports = mongoose.model('User', UserSchema);

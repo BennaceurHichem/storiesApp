@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 
 const passport = require('passport')
-const session  =  require('session')
+const session  =  require('express-session')
 
 
 
@@ -49,6 +49,7 @@ app.set('view engine', '.hbs');
 
 //configure routers 
   app.use('/', require('./routes/index.js'));
+  app.use('/auth/', require('./routes/auth.js'));
 
 
 const dbConnection  = require('./config/db')

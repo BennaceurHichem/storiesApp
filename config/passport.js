@@ -2,7 +2,7 @@
 //IN THIS FILE , we will add a new user after authen google auth     
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose')
-const User =  require('./Models/User')
+const User =  require('../Models/User')
 
 
 
@@ -19,11 +19,15 @@ module.exports = function(passport){
 
         //SUCCESFULL LOGIN 
         console.log(profile)
-                //googleId eist in User Modle 
+             //googleId eist in User Modle 
                 await  User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                    done(null,user);
                     return cb(err, user);
                     });
                 }
+                
+
+                
     ));
 
 
@@ -33,7 +37,7 @@ module.exports = function(passport){
       });
       
       passport.deserializeUser((id, done)=> {
-        User.findById(id, function(err, user) {
+        User.findById(id, (err, user)=> {
           done(err, user);
         });
       });

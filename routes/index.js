@@ -1,29 +1,29 @@
 const express = require('express')
-
-
 const router  =  express.Router()
+
+    
 
 
 router.get('/login',(req,res)=>  {
 
-        res.render('login',{
-            layout:"login"
-        })
+            res.render('login',{
+                layout:"login"
+            })
 
 
 
-})
+    })
 
 
 
-router.get('/dashboard',(req,res)=>  {
+    router.get('/dashboard',(req,res)=>  {
 
-    res.render('dashboard')
-
-
-
-})
+        res.render('dashboard')
 
 
 
-module.exports = router
+    })
+
+
+
+    module.exports = router
