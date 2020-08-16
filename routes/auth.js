@@ -8,16 +8,19 @@ const passport = require('passport')
             @route /auth/google 
         */
 router.get('/google',
-       passport.authenticate('google', { scope: ['profile'] }));
-     
+       passport.authenticate('google', { scope: ['profile'] })
+       
+       )
+      
+
 
         /*
             @description Aithenticated with google auth
             @route /auth/google /callback
         */
 router.get('/google/callback', 
-       passport.authenticate('google', { failureRedirect: '/login' }),
-       (req, res)=> {
+       passport.authenticate('google', { failureRedirect: '/' }),
+        (req, res)=> {
          // Successful authentication, redirect home.
          res.redirect('/dashboard');
        });

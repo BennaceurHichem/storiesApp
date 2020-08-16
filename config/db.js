@@ -16,6 +16,7 @@ try{
             })
             //you can get all connection data from this conn variable 
             console.log(`succesfull db connection in ${conn.connection.port}`)
+            
 
            }
             catch(err)

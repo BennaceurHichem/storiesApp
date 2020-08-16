@@ -20,9 +20,23 @@ module.exports = function(passport){
         //SUCCESFULL LOGIN 
         console.log(profile)
              //googleId eist in User Modle 
-                await  User.findOrCreate({ googleId: profile.id }, function (err, user) {
-                    done(null,user);
-                    return cb(err, user);
+                await  User.findOne({ googleId: profile.id },  async (err, user)=> {
+                    const newUser ={
+                        googleId:profile.id,
+                        firstName:profile.given_name,
+                        lastName:profile.family_name,
+                        displayName: profile.displayName,
+                        image:profile.photos[0].value
+                    }
+
+                    if(user){
+                        done(null,user)
+                    }else{
+                       user  =   await User.create(newUser)
+                        done(null,user)
+                    }
+                   
+                    console.log("user added to the dtabse ")
                     });
                 }
                 
