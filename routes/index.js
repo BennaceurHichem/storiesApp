@@ -1,13 +1,13 @@
 const express = require('express')
-const router  =  express.Router()
+const router  =  express.Router({ mergeParams: true })
 
     
+const {ensureAuth,ensureGuest} = require('../middleware/auth')
 
-
-router.get('/login',(req,res)=>  {
+router.get('/',ensureGuest, (req,res)=>  {
 
             res.render('login',{
-                layout:"login"
+                layout:'login'
             })
 
 
@@ -16,7 +16,7 @@ router.get('/login',(req,res)=>  {
 
 
 
-    router.get('/dashboard',(req,res)=>  {
+router.get('/dashboard',ensureAuth, (req,res)=>  {
 
         res.render('dashboard')
 
@@ -26,4 +26,4 @@ router.get('/login',(req,res)=>  {
 
 
 
-    module.exports = router
+module.exports = router

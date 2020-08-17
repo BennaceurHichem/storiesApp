@@ -14,6 +14,13 @@ const session  =  require('express-session')
 dotenv.config({ path: './config/config.env' })
 const app = express()
 
+
+// Body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+
+
 if(process.env.NODE_ENV==="development")
  {
      app.use(morgan('dev'))
@@ -49,7 +56,7 @@ app.set('view engine', '.hbs');
 
 //configure routers 
   app.use('/', require('./routes/index.js'));
-  app.use('/auth/', require('./routes/auth.js'));
+  app.use('/auth', require('./routes/auth.js'));
 
 
 const dbConnection  = require('./config/db')
