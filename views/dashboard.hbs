@@ -1,23 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/style.css" >
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  
-    <title>Dashboard page </title>
-</head>
-<body>
-    <h1>Dash oard </h1>
+<h3>Welcome {{name}}</h3>
 
 
-    <script>
-        M.Sidenav.init(document.querySelector('.sidenav'))
+{{#if stories }}
+    
 
-</script>
-</body>
-</html>
+    <table class="striped">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each stories}}
+                <tr>
+                    <td>
+                        <!-- this _id is know fo every story as we type story._id-->
+                        <a href="/stories/{{_id}}">{{title}}</a>
+                    </td>
+                    <td>{{createdAt}}</td>
+                    <td><span class="dash-status"> {{status}}</span></td>
+                </tr>
+
+            {{/each}}
+        </tbody>
+
+
+    </div>
+
+
+
+{{else}}
+
+<p>You havent cteated any stories yet</p>
+{{/if}}

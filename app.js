@@ -2,6 +2,8 @@ const express  =  require('express')
 const morgan  =  require('morgan')
 const dotenv  =  require('dotenv')
 const exphbs = require('express-handlebars')
+const mongoose =require('mongoose')
+
 const path = require('path')
 
 const passport = require('passport')
@@ -35,23 +37,20 @@ if(process.env.NODE_ENV==="development")
 //PASSSPORT CONFIG 
 require('./config/passport')(passport)
 
+//express ession middeware 
 //session config(should be above the use of passport.session) 
 app.use(session({
   secret: 'keyboard cat',
   //resave: false, we don't want to save a session if n oting is modified 
   resave: false,
   saveUninitialized: false,
-  //in this field we add 
+  //in this field we add ,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 
 }))
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-
-
-
-
 
  app.use(express.static(path.join(__dirname,'public')))
 
