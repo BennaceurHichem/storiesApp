@@ -5,7 +5,11 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 
 const passport = require('passport')
+
+//session despnednecies
 const session  =  require('express-session')
+//make sure that this is below session decalaration 
+const MongoStore = require('connect-mongo')(session)
 
 
 
@@ -37,6 +41,7 @@ app.use(session({
   //resave: false, we don't want to save a session if n oting is modified 
   resave: false,
   saveUninitialized: false,
+  //in this field we add 
 
 }))
 
