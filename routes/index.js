@@ -19,12 +19,18 @@ router.get('/',ensureGuest, (req,res)=>  {
 router.get('/dashboard',ensureAuth, async (req,res)=>  {
     try{
         //find all users story with their specific id 
-        const stories  =  await Story.find({use:req.user.id}).lean()
+        const stories  =  await Story.find({user:req.user.id}).lean()
+
+        console.log("stories"+stories)
+                    /*The lean option tells Mongoose to skip hydrating the result documents.
+             This makes queries faster and less memory intensive,
+             but the result documents are plain old JavaScript objects (POJOs)
+            */
 
         res.render('dashboard',{
             //adding these attributes mean that they are accessile in the vie file 
             name:req.user.displayName,
-            layout:'main'
+            stories: stories,
         })
     }catch(err) {
 

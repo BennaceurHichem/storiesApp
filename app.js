@@ -15,6 +15,7 @@ const MongoStore = require('connect-mongo')(session)
 
 
 
+
 //Load config formt he specific file config.env,
 // result will eb acdessible from process.env
 dotenv.config({ path: './config/config.env' })
@@ -61,6 +62,7 @@ app.set('view engine', '.hbs');
 //configure routers 
   app.use('/', require('./routes/index.js'));
   app.use('/auth', require('./routes/auth.js'));
+  app.use('/stories', require('./routes/stories.js'));
 
 
 const dbConnection  = require('./config/db')
