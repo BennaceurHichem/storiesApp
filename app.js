@@ -55,6 +55,12 @@ app.use(passport.session())
 
  app.use(express.static(path.join(__dirname,'public')))
 
+
+//handlebar helper 
+const {formatDate} = require('./helpers/hbs')
+
+
+
 //configure express-handlebars to use views in our folder with .hbs extension
  app.engine('.hbs', exphbs({defaultLayout:'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');

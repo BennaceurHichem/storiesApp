@@ -22,7 +22,9 @@
                         <!-- this _id is know fo every story as we type story._id-->
                         <a href="/stories/{{_id}}">{{title}}</a>
                     </td>
-                    <td>{{createdAt}}</td>
+                    <!--in hbs when callign a function we make a space between each 
+                    parameter(first one for date the second for the format supported by moment module)  -->
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
                     <td><span class="dash-status"> {{status}}</span></td>
                 </tr>
 
