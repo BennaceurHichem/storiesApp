@@ -5,6 +5,10 @@
     {{#each stories}}
             <div class="col s12 m4">
             <div class="card" style="margin:20px">
+                <div class="card-image">
+                    {{{editIcon user ../user _id }}}
+
+                </div>
                 <div class="card-content black-text center-align">
                 <span class="card-title ">{{title}}</span>
                 <!-- apply these two helpers on the body, 150 is a second param of trun cate which 

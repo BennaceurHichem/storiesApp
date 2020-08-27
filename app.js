@@ -53,6 +53,14 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+//set global variable with res.locals 
+app.use(function(req,res,next){
+  //this gives us the possibility of accessing to the user variable from our templates 
+  res.locals.user = req.user || null 
+  next()
+})
+
+
  app.use(express.static(path.join(__dirname,'public')))
 
 

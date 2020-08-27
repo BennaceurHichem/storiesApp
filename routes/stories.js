@@ -50,4 +50,31 @@ router.get('/',ensureAuth, async (req,res)=>  {
         }
 
     })
+
+
+
+    //@desc Show edit page 
+//@route GET /stories/edit/:id
+router.get('/edit/:id',ensureAuth, async (req,res)=>  {
+    //get this specific story
+    const story = await Story.findOne({_id:req.params.id}).lean()
+    if(!story){
+        res.render('error/404')
+    }
+//redirection in case of the story is not for the sepcific user 
+if(story.user !=req.user.id){
+    res.redirect('/dashboard')
+}
+else{
+    //goto edit page and send specific story informations to be edited 
+    res.render('stories/edit',{
+        story
+    })
+}
+    
+
+
+    res.render('stories/add')
+
+})
 module.exports = router
