@@ -40,3 +40,7 @@ body{
   .fa-small{
     font-size: 15px;
   }
+
+  .img-small{
+    width:180px
+  }
