@@ -23,10 +23,29 @@ router.post('/',ensureAuth,async  (req,res)=>  {
         res.render('error/500')
         }
 
+    })
+//@desc Show All stories 
+//@route GET /stories/Add
+ 
+
+router.get('/add',ensureAuth, async (req,res)=>  {
+
+        try{
+        /*fetch then render stories 
+            - populate usr mean that the data of the  specific user in story is get also and accessible 
+            with story.user.  */
+            await Stories.find({status:'public'})
+            .populate('user')
+            .sort({createdAt:'desc'})
+            .lean()
 
 
 
+        }catch(err){
+            console.log(err)
+            res.render('error/500')
+        }
+        res.render('stories/add')
 
-})
-
+    })
 module.exports = router
