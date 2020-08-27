@@ -57,12 +57,23 @@ app.use(passport.session())
 
 
 //handlebar helper 
-const {formatDate} = require('./helpers/hbs')
+const {formatDate,stripTags,editIcon,select,truncate} = require('./helpers/hbs')
 
 
 
 //configure express-handlebars to use views in our folder with .hbs extension
- app.engine('.hbs', exphbs({defaultLayout:'main', extname: '.hbs'}));
+ app.engine('.hbs', exphbs({
+  helpers:{
+    formatDate,
+    select,
+    editIcon,
+    stripTags,
+    truncate,
+  },  
+   defaultLayout:'main',
+    extname: '.hbs',
+   
+}));
 app.set('view engine', '.hbs');
 
 //configure routers 
