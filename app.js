@@ -17,6 +17,10 @@ const MongoStore = require('connect-mongo')(session)
 const methodOverride = require('method-override')
 
 
+//netlify 
+const serverless = require('serverless-http')
+
+
 
 //Load config formt he specific file config.env,
 // result will eb acdessible from process.env
@@ -99,9 +103,9 @@ const {formatDate,stripTags,editIcon,select,truncate} = require('./helpers/hbs')
 app.set('view engine', '.hbs');
 
 //configure routers 
-  app.use('/', require('./routes/index.js'));
-  app.use('/auth', require('./routes/auth.js'));
-  app.use('/stories', require('./routes/stories.js'));
+  app.use('app', require('./routes/index.js'));
+  app.use('auth', require('./routes/auth.js'));
+  app.use('stories', require('./routes/stories.js'));
 
 
  
@@ -117,10 +121,17 @@ dbConnection()
 
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3001
 
 
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT} in ${process.env.NODE_ENV} mode `)
   })
+  
+  
+
+
+
+ 
+// module.exports.handler  = serverless(app)
