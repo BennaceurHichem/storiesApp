@@ -15,4 +15,4 @@ this a crud application using node.js for adding/deleting and updating stories f
 
 
 # Demo : 
-![alt-text](https://github.com/BennaceurHichem/storiesApp/nodestorybook.gif "app demo")
+![](./nodestorybook.gif "app demo")
