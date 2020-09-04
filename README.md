@@ -4,7 +4,7 @@ this a crud application using node.js for adding/deleting and updating stories f
 # resumed features :
   <ul>
     <li> Google Oauth with passport.js authentication </li>
-    <li>woringwith express handlebars templatin engine without need for complex front end(with React or Vue...) </li>
+    <li>working with express handlebars templating engine without need for complex front end(with React or Vue...) </li>
     <li> Users managment system </li>
     <li> Stories dashboard for each user to create/update/delete their stories  </li>
     <li> add a public stories section whicbcontaine all public users stories,  </li>
