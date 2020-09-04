@@ -1,0 +1,65 @@
+<h1>Stories</h1>
+
+<div class="row">
+
+    {{#each stories}}
+            <div class="col s12 m4">
+            <div class="card" style="margin:20px">
+                <div class="card-image">
+                    {{{editIcon user ../user _id }}}
+
+                </div>
+                <div class="card-content black-text center-align">
+                <span class="card-title ">{{title}}</span>
+                <!-- apply these two helpers on the body, 150 is a second param of trun cate which 
+                specify the max lenfth of the text length-->
+                <p>{{ stripTags (truncate body 150) }} </p>
+                <div class="chip" style="width: max-content;">
+                                <img src="{{user.image}}" alt="">
+                                <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+                </div>
+                </div>
+
+                <div class="center-align">
+                    <a href="/stories/{{_id}}" class="btn grey waves-effect waves-light center-align mrg">Read more</a>
+
+                </div>
+            </div>
+            </div>
+
+
+    <!--    <div class="col s12 m4">
+                     <div class="card">
+                     <div class="card-image">
+               
+
+                <div class="card-content center-align">
+                    <h5>{{title}}</h5>
+                    <p>{{body}}</p>
+                    <br>
+                    <div class="chip" style="width: fit-content;">
+                        <img src="{{user.image}}" alt="">
+                        <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+                    </div>
+
+                <div class="card-action">
+                    <a href="/stories/{{_id}}" class="btn grey">Read more</a>
+                </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div> -->
+
+
+    {{else}}
+
+
+    {{/each}}
+</div>

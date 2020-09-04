@@ -1,0 +1,59 @@
+<h3>Welcome {{name}}</h3>
+
+
+{{#if stories }}
+    
+
+    <table class="striped">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each stories}}
+                <tr>
+                    <td>
+                        <!-- this _id is know fo every story as we type story._id-->
+                        <a href="/stories/{{_id}}">{{title}}</a>
+                    </td>
+                    <!--in hbs when callign a function we make a space between each 
+                    parameter(first one for date the second for the format supported by moment module)  -->
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+                    <td><span class="dash-status"> {{status}}</span></td>
+                    
+                    <td><a href="/stories/edit/{{_id}}" class="btn btn-float">
+                        <i class="fas fa-edit"></i>
+                    </a></td>
+                    <td>
+                          <form action="/stories/delete/{{_id}}" method="POST" id="delete-form">
+
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit"  class="btn red ">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+
+                    </td>
+                  
+
+
+                </tr>
+
+            {{/each}}
+        </tbody>
+
+
+    </div>
+
+
+
+{{else}}
+
+<p>You havent cteated any stories yet</p>
+{{/if}}
